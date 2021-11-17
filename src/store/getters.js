@@ -1,8 +1,8 @@
 export default {
-  cartLength (state) {
+  cartLength(state) {
     return state.cartList.length
   },
-  cartList (state) {
+  cartList(state) {
     return state.cartList
   },
   totalPrice(state) {
@@ -18,7 +18,11 @@ export default {
     return cartList.filter(item => {
       return item.checked
     }).reduce((preValue, item) => {
-      return preValue + item.count 
+      return preValue + item.count
     }, 0)
   },
+  getChecked: (state) => (iid) => {
+    let product = state.cartList.find(item => item.iid === iid)
+    return product.checked
+  }
 }

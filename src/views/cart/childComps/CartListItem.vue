@@ -1,20 +1,17 @@
 <template>
   <div id="shop-item">
     <div class="item-selector">
-      <check-button
-        :is-checked="itemInfo.checked"
-        @click.native="checkClick"
-      />
+      <check-button :is-checked="ischecked" @click.native="checkedChange" />
     </div>
     <div class="item-img">
-      <img :src="itemInfo.img" alt="商品图片" />
+      <img :src="shopinfo.img" alt="商品图片" />
     </div>
     <div class="item-info">
-      <div class="item-title">{{ itemInfo.title }}</div>
-      <div class="item-desc">{{ itemInfo.desc }}</div>
+      <div class="item-title">{{ shopinfo.title }}</div>
+      <div class="item-desc">{{ shopinfo.desc }}</div>
       <div class="info-bottom">
-        <div class="item-price left">￥{{ itemInfo.newPrice }}</div>
-        <div class="item-count right">x{{ itemInfo.count }}</div>
+        <div class="item-price left">￥{{ shopinfo.newPrice }}</div>
+        <div class="item-count right">x{{ shopinfo.count }}</div>
       </div>
     </div>
   </div>
@@ -22,27 +19,34 @@
 
 <script>
 import CheckButton from "components/content/checkButton/CheckButton";
+import { mapGetters } from "vuex";
 export default {
   components: { CheckButton },
   name: "CartListItem",
   props: {
-    itemInfo: {
+    shopinfo: {
       type: Object,
       default() {
         return {};
       },
     },
   },
+  data() {
+    return {
+      ischecked: true,
+    };
+  },
+  computed: {
+    ...mapGetters(["cartList", "getChecked"]),
+  },
+
   created() {
-    // console.log(this.itemInfo);
+    this.ischecked = this.$store.getters.getChecked(this.shopinfo.iid);
   },
   methods: {
-    checkClick() {
-      // console.log("点我");
-      // console.log(this.itemInfo.checked);
-      // this.itemInfo.checked = !this.itemInfo.checked;
-      // console.log(this.itemInfo.checked);
-       this.$store.commit('checkClick', this.itemInfo.iid)
+    checkedChange() {
+      this.$store.commit("checkClick", this.shopinfo.iid);
+      this.ischecked = this.$store.getters.getChecked(this.shopinfo.iid);
     },
   },
 };

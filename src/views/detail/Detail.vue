@@ -165,13 +165,20 @@ export default {
     addToCart() {
       this.product.checked = true;
       this.product.count = 1;
-      this.product.iid = this.iid;      
+      this.product.iid = this.iid;
       this.product.img = this.topImages[0];
       this.product.title = this.goods.title;
       this.product.desc = this.goods.desc;
       this.product.newPrice = this.goods.realPrice;
       // console.log(this.product);
-      this.$store.dispatch("addCart", this.product);
+      this.$store.dispatch("addCart", this.product).then((res) => {
+        this.message = res;
+        this.isShow = true;
+        setTimeout(() => {
+          this.isShow = false;
+          this.message = "";
+        }, 1500);
+      });
     },
   },
 };

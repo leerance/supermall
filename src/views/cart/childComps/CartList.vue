@@ -4,7 +4,7 @@
       <cart-list-item
         v-for="(item, index) in cartList"
         :key="index"
-        :item-info="item"
+        :shopinfo="item"
       />
     </scroll>
   </div>
@@ -28,10 +28,8 @@ export default {
   activated() {
     this.$refs.scroll.refresh();
   },
-  methods:{
-    
-  }
-  
+  created() {},
+  methods: {},
 };
 </script>
 

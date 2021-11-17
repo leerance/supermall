@@ -1,8 +1,8 @@
 <template>
   <div id="cart" class="cart">
-    <nav-bar class="cart-nav"
-      ><template #center>购物车({{ cartLength }})</template>></nav-bar
-    >
+    <nav-bar class="cart-nav">
+      <template #center>购物车({{ cartLength }})</template>
+    </nav-bar>
     <!-- 商品列表 -->
     <cart-list />
     <!-- 底部汇总 -->

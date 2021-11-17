@@ -20,7 +20,7 @@
     >
       <home-swiper
         :banners="banners"
-        @swiperImageLoad="SwiperImageLoad"
+        @SwiperImageLoad="SwiperImageLoad"
         :key="home_swiper"
       ></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
@@ -172,7 +172,7 @@ export default {
     //吸顶效果
     SwiperImageLoad() {
       //判断什么时候，显示上面的tabControl
-      //console.log(this.$refs.tabControl.$el.offsetTop);
+      // console.log(this.$refs.tabControl.$el.offsetTop);
       this.taboffsetTop = this.$refs.tabControl.$el.offsetTop;
       this.goods.pop.y = -this.taboffsetTop;
       this.goods.new.y = -this.taboffsetTop;

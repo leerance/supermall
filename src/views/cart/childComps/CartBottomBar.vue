@@ -29,11 +29,6 @@ export default {
   },
   methods: {
     checkClick() {
-      // if (this.isSelectAll) {
-      //   this.cartList.forEach(item => item.checked = false)
-      // } else {
-      //   this.cartList.forEach(item => item.checked = true)
-      // }
       this.cartList.forEach(item => item.checked = !this.isSelectAll)
     },
     cartBuy() {
