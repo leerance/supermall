@@ -39,7 +39,6 @@ export default {
 }
 .content {
   overflow: hidden;
-  margin-top: 44px;
   height: calc(100% - 133px);
 }
 </style>

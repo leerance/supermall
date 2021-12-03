@@ -1,5 +1,5 @@
 <template>
-  <div class="check-button" :class="{ check: isChecked }">
+  <div class="check-button" :class="{'selector-active': checked}">
     <img src="~assets/img/cart/tick.svg" alt="" />
   </div>
 </template>
@@ -8,24 +8,32 @@
 export default {
   name: "CheckButton",
   props: {
-    isChecked: {
+    value: {
       type: Boolean,
       default: true,
+    },
+  },
+  watch: {
+    value: function (newValue) {
+      this.checked = newValue;
     },
   },
 };
 </script>
 
 <style>
-.check-button {
-  border-radius: 50%;
-  border: 2px solid #aaa;
-}
-.check-button img {
-  display: inline-block;
-}
-.check {
-  background-color: var(--color-high-text);
-  border: 2px solid var(--color-high-text);
-}
+.icon-selector {
+    position: relative;
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+
+  .selector-active {
+    background-color: #ff8198;
+    border-color: #ff8198;
+  }
 </style>

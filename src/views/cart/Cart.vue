@@ -1,62 +1,47 @@
 <template>
-  <div id="cart" class="cart">
-    <nav-bar class="cart-nav">
-      <template #center>购物车({{ cartLength }})</template>
-    </nav-bar>
-    <!-- 商品列表 -->
-    <cart-list />
-    <!-- 底部汇总 -->
-    <cart-bottom-bar @cartBuy="cartBuy" />
-    <toast :message="message" :isShow="isShow" />
+  <div id="cart">
+    <nav-bar class="nav-bar"
+      ><div slot="center">购物车({{ cartLength }})</div></nav-bar
+    >
+    <cart-list class="cart-list" ></cart-list>
+    <bottom-bar></bottom-bar>
   </div>
 </template>
 
 <script>
-import NavBar from "components/common/navbar/NavBar.vue";
-import CartList from "./childComps/CartList.vue";
-import CartBottomBar from "./childComps/CartBottomBar.vue";
-import Toast from "components/common/toast/Toast.vue";
+import NavBar from "components/common/navbar/NavBar";
+import CartList from "./childComps/CartList";
+import BottomBar from "./childComps/BottomBar";
 import { mapGetters } from "vuex";
 export default {
-  name: "cart",
+  name: "Cart",
   components: {
     NavBar,
     CartList,
-    CartBottomBar,
-    Toast,
-  },
-  data() {
-    return {
-      isShow: false,
-      message: "请选择商品",
-    };
+    BottomBar,
   },
   computed: {
     ...mapGetters(["cartLength"]),
-  },
-  methods: {
-    cartBuy() {
-      if (!this.totalCount) {
-        this.isShow = true;
-        setTimeout(() => {
-          this.isShow = false;
-        }, 1500);
-      }
-    },
   },
 };
 </script>
 
 <style scoped>
-.cart-nav {
+#cart {
+  /*position: relative;*/
+  height: 100vh;
+}
+
+.nav-bar {
   background-color: var(--color-tint);
-  color: #fff;
   font-weight: 700;
-  /* 为了在使用原生滚动时，导航栏不随着内容滚动 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9;
+  color: #fff;
+}
+
+.cart-list {
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  width: 100%;
 }
 </style>
