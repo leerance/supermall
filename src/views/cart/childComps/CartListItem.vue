@@ -1,7 +1,11 @@
 <template>
   <div id="shop-item">
     <div class="item-selector">
-      <check-button :is-checked="ischecked" @click.native="checkedChange" />
+      <check-button
+        :is-checked="ischecked"
+        @click.native="checkedChange"
+        v-model="shopinfo.checked"
+      />
     </div>
     <div class="item-img">
       <img :src="shopinfo.img" alt="商品图片" />
@@ -18,7 +22,7 @@
 </template>
 
 <script>
-import CheckButton from "components/content/checkButton/CheckButton";
+import CheckButton from "./CheckButton.vue";
 import { mapGetters } from "vuex";
 export default {
   components: { CheckButton },

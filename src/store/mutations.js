@@ -1,7 +1,8 @@
 import {
   ADD_COUNTER,
   ADD_TO_CART,
-  CHECK_CLICK
+  CHECK_CLICK,
+  ALL_SET_CHECK
 } from "./mutation-types";
 
 export default {
@@ -16,5 +17,11 @@ export default {
   [CHECK_CLICK](state, payload) {
     let product = state.cartList.find(item => item.iid === payload)
     product.checked = !product.checked
+  },
+  [ALL_SET_CHECK](state, [payload, TOrF]) {
+    console.log(TOrF);
+    let product = state.cartList.find(item => item.iid === payload)
+    product.checked = TOrF
   }
+
 }
