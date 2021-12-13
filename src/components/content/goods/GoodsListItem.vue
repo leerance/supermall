@@ -1,6 +1,9 @@
 <template>
-  <div class="goods-item" @click="itemClick(goodsItem.iid || goodsItem.shop_id)">
-    <img :src="showImage" alt="" @load="imageLoad"/>
+  <div
+    class="goods-item"
+    @click="itemClick(goodsItem.iid || goodsItem.shop_id)"
+  >
+    <img :src="showImage" alt="" @load="imageLoad" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -9,7 +12,8 @@
   </div>
 </template>
 
-<script>import router from "../../../router";
+<script>
+import router from "../../../router";
 
 export default {
   name: "GoodsListItem",
@@ -22,18 +26,21 @@ export default {
     },
   },
   computed: {
-    showImage () {
-      return this.goodsItem.image || this.goodsItem.img || this.goodsItem.show.img
-    }
-  },
-  methods:{
-    imageLoad(){
-      this.$bus.$emit("itemImageLoad")
+    showImage() {
+      return (
+        this.goodsItem.image || this.goodsItem.img || this.goodsItem.show.img
+      );
     },
-    itemClick(id){
-      this.$router.push('/detail/' + id)
-    }
-  }
+  },
+  created() {},
+  methods: {
+    imageLoad() {
+      this.$bus.$emit("itemImageLoad");
+    },
+    itemClick(id) {
+      this.$router.push("/detail/" + id);
+    },
+  },
 };
 </script>
 
