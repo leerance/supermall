@@ -98,21 +98,23 @@ export default {
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
   },
+  //销毁事件
   destroyed() {
-    //销毁事件
     console.log("destroyed");
   },
+  //进入事件
   activated() {
-    //进入事件
     this.$refs.scroll.refresh();
+    //跳转到指定的Y值
     this.$refs.scroll.scrollTo(0, this.saveY, 0);
-    //console.log("activated");
+    console.log("activated");
   },
+  //离开事件
   deactivated() {
-    //离开事件
+    //获取当前页面的Y值
     this.saveY = this.$refs.scroll.getScrollY();
     this.$refs.scroll.refresh();
-    //console.log("deactivated");
+    console.log("deactivated");
   },
   methods: {
     /**
