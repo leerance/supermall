@@ -33,7 +33,10 @@
       <goods-list :goods="goods[currentType].list"></goods-list>
     </scroll>
 
-    <back-top @click.native="backTopClick" v-show="isShowBackTop"></back-top>
+    <back-top
+      @click.native="backTopClick"
+      v-show="isShowBackTop"
+    ></back-top>
   </div>
 </template>
 
