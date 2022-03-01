@@ -1,49 +1,50 @@
 <template>
   <nav-bar class="nav-bar">
-      <template #left>
-        <img
-          src="../../../assets/img/common/back.svg"
-          alt=""
-          @click="backClick"
-          class="back"
-        />
-      </template>
-      <template #center>
-        <span
-          v-for="(item, index) in titles"
-          :key="index"
-          @click="itemClick(index)"
-          :class="{ active: index === currentIndex }"
-        >
-          {{ item }}
-        </span>
-      </template>
-    </nav-bar>
+    <template #left>
+      <img
+        src="../../../assets/img/common/back.svg"
+        alt=""
+        @click="backClick"
+        class="back"
+      />
+    </template>
+    <template #center>
+      <span
+        v-for="(item, index) in titles"
+        :key="index"
+        @click="itemClick(index)"
+        :class="{ active: index === currentIndex }"
+      >
+        {{ item }}
+      </span>
+    </template>
+  </nav-bar>
 </template>
 
 <script>
-import NavBar from 'components/common/navbar/NavBar'
+import NavBar from "components/common/navbar/NavBar";
 export default {
-  name: 'DetailNavBar',
-  data () {
+  name: "DetailNavBar",
+  data() {
     return {
       currentIndex: 0,
-      titles: ["商品", "参数", "评论", "推荐"]
-    }
+      titles: ["商品", "参数", "评论", "推荐"],
+    };
   },
   components: {
-    NavBar
+    NavBar,
   },
   methods: {
     itemClick(index) {
+      // console.log(index);
       this.currentIndex = index;
-      this.$emit('tabClick', index )
+      this.$emit("tabClick", index);
     },
     backClick() {
       this.$router.back();
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
