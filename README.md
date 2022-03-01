@@ -2,7 +2,8 @@
 
 ## Project setup
 ```
-npm install
+// 修改镜像地址会更快
+npm install --registry=https://registry.npm.taobao.org
 ```
 
 ### Compiles and hot-reloads for development

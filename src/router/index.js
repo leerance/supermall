@@ -6,6 +6,7 @@ const Category = () => import('views/category/Category')
 const Cart = () => import('views/cart/Cart')
 const Profile = () => import('views/profile/Profile')
 const Detail = () => import('views/detail/Detail')
+const test = () => import('views/test/test')
 //1、安装
 Vue.use(VueRouter)
 
@@ -28,6 +29,9 @@ const routes = [
   }, {
     path: '/detail/:iid',
     component: Detail
+  }, {
+    path: '/test',
+    component: test
   }
 ]
 //2、创建路由对象
